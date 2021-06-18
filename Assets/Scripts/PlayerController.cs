@@ -6,37 +6,54 @@ public class PlayerController : MonoBehaviour{
 
     private Rigidbody playerRigidbody;
 
-    //Stores the vector used to move the player in a desired direction each physics update.
+    //Stores the current inputs and applies speeds for player movement.
     private Vector3 inputVector;
 
-    //Stores the speed at which the player moves in the X and Z directions.
-    private float playerSpeed = 5.0f;
+    //Stores the speeds the player moves in each direction/action.
+    private float playerSpeed = 5.0f, jumpSpeed = 8.0f;
+
+    //Stores a check on if the player is currently on the ground, used for jumping.
+    private bool isGrounded = false;
 
 
 
-    //Initializations
     void Start(){
 
         playerRigidbody = GetComponent<Rigidbody>();
 
     }
-
-    //Every frame
+    
     void Update(){
 
+        //NOTE: gravity is already affecting the y axis so simply get the current y velocity.
         inputVector = new Vector3(Input.GetAxisRaw("Horizontal") * playerSpeed, playerRigidbody.velocity.y, Input.GetAxisRaw("Vertical") * playerSpeed);
+
+        //Change the inputVector to move up the y axis if the player presses space to jump and is on the ground
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded){
+
+            inputVector += new Vector3(0, jumpSpeed, 0);
+
+        }
 
         //When the player moves on the x or z axis, face that direction.
         transform.LookAt(transform.position + new Vector3(inputVector.x, 0, inputVector.z));
 
     }
 
-    //Manageing physics
     void FixedUpdate(){
 
-        //Take the stored input vector and apply it to the player object
+        //Take the stored input vector and apply it to the player object.
         playerRigidbody.velocity = inputVector;
 
+    }
+
+    //Check if the object is touching or has left the ground and change isGrounded accordingly.
+    void OnCollisionEnter(Collision collision){
+        isGrounded = true;
+    }
+
+    void OnCollisionExit(Collision collision){
+        isGrounded = false;
     }
 
 }
