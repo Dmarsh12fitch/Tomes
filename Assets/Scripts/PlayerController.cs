@@ -28,10 +28,10 @@ public class PlayerController : MonoBehaviour{
         //NOTE: gravity is already affecting the y axis so simply get the current y velocity.
         inputVector = new Vector3(Input.GetAxisRaw("Horizontal") * playerSpeed, playerRigidbody.velocity.y, Input.GetAxisRaw("Vertical") * playerSpeed);
 
-        //Change the inputVector to move up the y axis if the player presses space to jump and is on the ground
+        //If the player object is on the ground and the player pressed space, add an upwards force to the object.
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded){
 
-            inputVector += new Vector3(0, jumpSpeed, 0);
+            playerRigidbody.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
 
         }
 
