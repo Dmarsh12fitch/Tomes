@@ -311,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1882272867}
   offset: {x: -5.2, y: 2.71, z: -6.88}
+  sensitivity: 300
 --- !u!1 &1882272867
 GameObject:
   m_ObjectHideFlags: 0
