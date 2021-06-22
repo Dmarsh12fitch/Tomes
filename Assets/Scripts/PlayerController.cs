@@ -25,18 +25,21 @@ public class PlayerController : MonoBehaviour{
     
     void Update(){
 
-        //NOTE: gravity is already affecting the y axis so simply get the current y velocity.
-        inputVector = new Vector3(Input.GetAxisRaw("Horizontal") * playerSpeed, playerRigidbody.velocity.y, Input.GetAxisRaw("Vertical") * playerSpeed);
+        //Get the direction the user inputed and put the walking speed in that axis of the vector.
+        //Gravity is already affecting the y axis so put that into the y axis of the vector.
+        inputVector = new Vector3
+        (Input.GetAxisRaw("Horizontal") * playerSpeed, playerRigidbody.velocity.y, Input.GetAxisRaw("Vertical") * playerSpeed);
 
-        //If the player object is on the ground and the player pressed space, add an upwards force to the object.
+        //Essentially the front of the object the objects position +1 in the direction the user inputed.
+        transform.LookAt(transform.position + new Vector3(inputVector.x, 0, inputVector.z));
+
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded){
 
+            //Add an upwards force at the jumpSpeed set, apply it instantly.
             playerRigidbody.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
 
         }
-
-        //When the player moves on the x or z axis, face that direction.
-        transform.LookAt(transform.position + new Vector3(inputVector.x, 0, inputVector.z));
 
     }
 
@@ -47,7 +50,8 @@ public class PlayerController : MonoBehaviour{
 
     }
 
-    //Check if the object is touching or has left the ground and change isGrounded accordingly.
+
+    //Check if the object has started touching or has left the ground and change isGrounded accordingly.
     void OnCollisionEnter(Collision collision){
         isGrounded = true;
     }
