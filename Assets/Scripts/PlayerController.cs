@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour{
             //Add an upwards force at the jumpSpeed set, apply it instantly.
             playerRigidbody.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
 
+            isGrounded = false;
+
         }
 
     }
@@ -51,13 +53,9 @@ public class PlayerController : MonoBehaviour{
     }
 
 
-    //Check if the object has started touching or has left the ground and change isGrounded accordingly.
+    //Check if the object has started touching the ground and change isGrounded accordingly.
     void OnCollisionEnter(Collision collision){
         isGrounded = true;
-    }
-
-    void OnCollisionExit(Collision collision){
-        isGrounded = false;
     }
 
 }
