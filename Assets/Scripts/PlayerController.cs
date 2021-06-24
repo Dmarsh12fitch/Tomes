@@ -50,6 +50,25 @@ public class PlayerController : MonoBehaviour{
         //Take the stored input vector and apply it to the player object.
         playerRigidbody.velocity = inputVector;
 
+
+        // Get the velocity of the rigidbody but ignore the yaxis value.
+        Vector3 horizontalMovement = playerRigidbody.velocity;
+        horizontalMovement.y = 0;
+        //This is the distance that the player object will be moved in a given physics update.
+        float distance = horizontalMovement.magnitude * Time.fixedDeltaTime;
+        horizontalMovement.Normalize();
+        //Use raycasting to detect future collisions in a direction.
+        RaycastHit hit;
+
+        //Sweeptest checks if the rigidbody would collide when moved through the scene.
+        if (playerRigidbody.SweepTest(horizontalMovement, out hit, distance)){
+
+            //During a collision the object should simply fall rather than move in any other axis.
+            playerRigidbody.velocity = new Vector3(0, playerRigidbody.velocity.y, 0);
+
+        }
+
+
     }
 
 
