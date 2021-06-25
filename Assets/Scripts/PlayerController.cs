@@ -43,6 +43,33 @@ public class PlayerController : MonoBehaviour{
 
         }
 
+
+        //NOTE: Need to get a ray from the player to the mouse click, WIP.
+        if (Input.GetKey(KeyCode.Mouse0)){
+
+            //Creates a ray starting from the camera to the direction of the mouse position (specifically a vector point)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            //Used to store information when the ray hits something
+            RaycastHit hit;
+
+            //If the ray hits something
+            if (Physics.Raycast(ray, out hit)){
+
+                try{
+
+                    //Have the cube look at where the ray hit
+                    hit.rigidbody.AddForce(ray.direction * 100, ForceMode.Force);
+
+                }
+                catch{
+
+                }
+
+            }
+
+        }
+
     }
 
     void FixedUpdate(){
