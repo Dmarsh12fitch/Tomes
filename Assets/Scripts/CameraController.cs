@@ -14,7 +14,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float sensitivity;
     private Vector2 rotation;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -38,4 +37,6 @@ public class CameraController : MonoBehaviour
         
 
     }
+
+    
 }
