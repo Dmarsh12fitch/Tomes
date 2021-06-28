@@ -44,29 +44,37 @@ public class PlayerController : MonoBehaviour{
         }
 
 
-        //NOTE: Need to get a ray from the player to the mouse click, WIP.
+        //WIP.
         if (Input.GetKey(KeyCode.Mouse0)){
 
-            //Creates a ray starting from the camera to the direction of the mouse position (specifically a vector point)
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //Send out a ray from the camera to where the user is clicking on the screen.
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            //Used to store information when the ray hits something
-            RaycastHit hit;
+            RaycastHit mouseHit;
 
-            //If the ray hits something
-            if (Physics.Raycast(ray, out hit)){
+            Vector3 mouseCollisionPoint = Vector3.zero;
 
-                try{
+            //Use that ray to then find the object the user is trying to push.
+            if (Physics.Raycast(mouseRay, out mouseHit)){
 
-                    //Have the cube look at where the ray hit
-                    hit.rigidbody.AddForce(ray.direction * 100, ForceMode.Force);
-
-                }
-                catch{
-
-                }
+                mouseCollisionPoint = mouseHit.transform.position;
 
             }
+
+            
+            RaycastHit spellHit;
+
+            //Send out a line from the player object to the object they want to point the spell at and check for line collisions.
+            if (Physics.Linecast(gameObject.transform.position, mouseCollisionPoint, out spellHit)){
+
+                Vector3 forceDirection = spellHit.point - gameObject.transform.position;
+
+                //Add force to objects hit within the spell.
+                spellHit.rigidbody.AddForce(forceDirection * 10, ForceMode.Force);
+
+            }
+
+            Debug.DrawLine(mouseCollisionPoint, gameObject.transform.position, Color.red);
 
         }
 
