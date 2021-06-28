@@ -31,7 +31,7 @@ public class EarthPlatform : MonoBehaviour
             platform.transform.position = Vector3.MoveTowards(platform.transform.position, OffPos.transform.position, platformSpeed );
         }
         
-        //Player Acticvation 
+        // Scuffed Player Acticvation 
         if (Input.GetKeyDown(KeyCode.Q)){
             if ( Activated == false){
                 Activated = true;
