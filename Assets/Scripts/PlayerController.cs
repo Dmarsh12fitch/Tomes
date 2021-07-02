@@ -54,10 +54,10 @@ public class PlayerController : MonoBehaviour{
 
             Vector3 mouseCollisionPoint = Vector3.zero;
 
-            //Use that ray to then find the object the user is trying to push.
+            //Use that ray to then find the point on the map the user is trying to send the spell.
             if (Physics.Raycast(mouseRay, out mouseHit)){
 
-                mouseCollisionPoint = mouseHit.transform.position;
+                mouseCollisionPoint = mouseHit.point;
 
             }
 
@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour{
             Debug.DrawLine(mouseCollisionPoint, gameObject.transform.position, Color.red);
 
         }
+
+
 
     }
 
