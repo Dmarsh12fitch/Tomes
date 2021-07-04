@@ -43,44 +43,83 @@ public class PlayerController : MonoBehaviour{
 
         }
 
+        //Temporary storage of what spell is activated
+        int currentSpell = 0;
 
         //WIP.
         if (Input.GetKey(KeyCode.Mouse0)){
 
-            //Send out a ray from the camera to where the user is clicking on the screen.
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            switch (currentSpell){
 
-            RaycastHit mouseHit;
+                case 0:
 
-            Vector3 mouseCollisionPoint = Vector3.zero;
+                    break;
 
-            //Use that ray to then find the point on the map the user is trying to send the spell.
-            if (Physics.Raycast(mouseRay, out mouseHit)){
+                case 1:
 
-                mouseCollisionPoint = mouseHit.point;
+                    //Send out a ray from the camera to where the user is clicking on the screen.
+                    Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                    RaycastHit mouseHit;
+
+                    Vector3 mouseCollisionPoint = Vector3.zero;
+
+                    //Use that ray to then find the point on the map the user is trying to send the spell.
+                    if (Physics.Raycast(mouseRay, out mouseHit)){
+
+                        mouseCollisionPoint = mouseHit.point;
+
+                    }
+
+
+                    RaycastHit spellHit;
+
+                    //Send out a line from the player object to the object they want to point the spell at and check for line collisions.
+                    if (Physics.Linecast(gameObject.transform.position, mouseCollisionPoint, out spellHit))
+                    {
+
+                        Vector3 forceDirection = spellHit.point - gameObject.transform.position;
+
+                        //Add force to objects hit within the spell.
+                        spellHit.rigidbody.AddForce(forceDirection * 10, ForceMode.Force);
+
+                    }
+
+                    break;
+
+                case 2:
+
+                    GameObject.Find("Fire Spell Mesh").SetActive(true);
+
+                    if (Input.GetKeyUp(KeyCode.Mouse0)){
+
+                        GameObject.Find("Fire Spell Mesh").SetActive(false);
+
+                    }
+
+                    break;
 
             }
 
-            
-            RaycastHit spellHit;
+        }
 
-            //Send out a line from the player object to the object they want to point the spell at and check for line collisions.
-            if (Physics.Linecast(gameObject.transform.position, mouseCollisionPoint, out spellHit)){
+        //Go through potential numbers to check if any are down
+        for (int i = 0; i < 10; ++i){
 
-                Vector3 forceDirection = spellHit.point - gameObject.transform.position;
+            if (Input.GetKeyDown("" + i)){
 
-                //Add force to objects hit within the spell.
-                spellHit.rigidbody.AddForce(forceDirection * 10, ForceMode.Force);
+                Debug.Log(i);
+
+                currentSpell = i;
 
             }
-
-            Debug.DrawLine(mouseCollisionPoint, gameObject.transform.position, Color.red);
 
         }
 
 
 
     }
+
 
     void FixedUpdate(){
 
