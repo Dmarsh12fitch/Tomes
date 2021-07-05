@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireSpellMesh : MonoBehaviour{
+public class FireSpellScript : MonoBehaviour{
 
     //Hold the mesh for the triangle that represents the fire spell
     Mesh mesh;
@@ -10,6 +10,8 @@ public class FireSpellMesh : MonoBehaviour{
     //The verticies that connect the mesh
     Vector3[] vertices;
     int[] triangles;
+
+
 
     // Start is called before the first frame update
     void Awake(){
@@ -39,7 +41,7 @@ public class FireSpellMesh : MonoBehaviour{
 
         if (other.gameObject.tag == "Brush"){
 
-            Destroy(other);
+            Destroy(other.gameObject);
 
         }
 

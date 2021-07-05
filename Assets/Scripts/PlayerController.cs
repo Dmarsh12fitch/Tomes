@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour{
     //Stores a check on if the player is currently on the ground, used for jumping.
     private bool isGrounded = false;
 
+    private int currentSpell = 0;
+
 
 
     void Start(){
@@ -42,9 +44,6 @@ public class PlayerController : MonoBehaviour{
             isGrounded = false;
 
         }
-
-        //Temporary storage of what spell is activated
-        int currentSpell = 0;
 
         //WIP.
         if (Input.GetKey(KeyCode.Mouse0)){
@@ -75,8 +74,7 @@ public class PlayerController : MonoBehaviour{
                     RaycastHit spellHit;
 
                     //Send out a line from the player object to the object they want to point the spell at and check for line collisions.
-                    if (Physics.Linecast(gameObject.transform.position, mouseCollisionPoint, out spellHit))
-                    {
+                    if (Physics.Linecast(gameObject.transform.position, mouseCollisionPoint, out spellHit)){
 
                         Vector3 forceDirection = spellHit.point - gameObject.transform.position;
 
@@ -85,21 +83,24 @@ public class PlayerController : MonoBehaviour{
 
                     }
 
+                    Debug.DrawLine(mouseCollisionPoint, gameObject.transform.position, Color.red);
+
                     break;
 
                 case 2:
 
-                    GameObject.Find("Fire Spell Mesh").SetActive(true);
-
-                    if (Input.GetKeyUp(KeyCode.Mouse0)){
-
-                        GameObject.Find("Fire Spell Mesh").SetActive(false);
-
-                    }
+                    //Get the fire spell object and make it active
+                    transform.GetChild(0).gameObject.SetActive(true);
 
                     break;
 
             }
+
+        }
+        else{
+
+            //Once left click is taken off, deactivate anything that needs to be deactivated
+            transform.GetChild(0).gameObject.SetActive(false);
 
         }
 
@@ -108,8 +109,7 @@ public class PlayerController : MonoBehaviour{
 
             if (Input.GetKeyDown("" + i)){
 
-                Debug.Log(i);
-
+                //Update the current selected spell if the player picks a number.
                 currentSpell = i;
 
             }
