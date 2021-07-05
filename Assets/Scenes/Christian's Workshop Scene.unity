@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 458163}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Off Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 144999255}
   - component: {fileID: 144999254}
   - component: {fileID: 144999253}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175813877}
   - component: {fileID: 175813876}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Earth Platform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239971320}
   - component: {fileID: 239971319}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Earth Platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244930822}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: On Pos
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 373767242}
   - component: {fileID: 373767241}
   - component: {fileID: 373767240}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 397291051}
   - component: {fileID: 397291050}
   - component: {fileID: 397291049}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436056501}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: On Pos
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 710236340}
   - component: {fileID: 710236339}
   - component: {fileID: 710236338}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764693286}
   - component: {fileID: 764693285}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Earth Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326920854}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: On Pos
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 1441976606}
   - component: {fileID: 1441976605}
   - component: {fileID: 1441976604}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ GameObject:
   - component: {fileID: 1590881188}
   - component: {fileID: 1590881187}
   - component: {fileID: 1590881186}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 1661674223}
   - component: {fileID: 1661674222}
   - component: {fileID: 1661674221}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667542471}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Off Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1865699948}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Off Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1366,7 @@ GameObject:
   - component: {fileID: 2105001107}
   - component: {fileID: 2105001106}
   - component: {fileID: 2105001105}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1459,7 +1459,7 @@ GameObject:
   - component: {fileID: 2118380798}
   - component: {fileID: 2118380797}
   - component: {fileID: 2118380796}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
