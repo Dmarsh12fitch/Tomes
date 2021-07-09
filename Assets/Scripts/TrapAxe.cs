@@ -19,6 +19,7 @@ public class TrapAxe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Rotates axe
        if (axeToggle == true) {
            Axe.transform.Rotate(Vector3.left * speed * Time.deltaTime);
        }
