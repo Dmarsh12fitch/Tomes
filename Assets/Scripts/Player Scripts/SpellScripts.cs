@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class SpellScripts : MonoBehaviour{
 
-    //What is the current spell the player wants to activate
+    //What is the current spell the player wants to activate.
     private int currentSpell = 0;
+
+    //The force that is added to the object when hit by the wind spell.
+    private float windStrength = 100.0f;
 
 
 
     void Update(){
+
+        //Go through potential numbers to check if any are down.
+        for (int i = 0; i < 10; ++i){
+
+            if (Input.GetKeyDown("" + i)){
+
+                //Update the current selected spell if the player picks a number.
+                currentSpell = i;
+
+            }
+
+        }
 
         if (Input.GetKey(KeyCode.Mouse0)){
 
@@ -19,7 +34,8 @@ public class SpellScripts : MonoBehaviour{
 
                     //No spell is activated
                     break;
-
+                
+                //Wind Spell
                 case 1:
 
                     //Send out a ray from the camera to where the user is clicking on the screen.
@@ -45,18 +61,40 @@ public class SpellScripts : MonoBehaviour{
                         Vector3 forceDirection = spellHit.point - gameObject.transform.position;
 
                         //Add force to objects hit within the spell.
-                        spellHit.rigidbody.AddForce(forceDirection * 10, ForceMode.Force);
+                        spellHit.rigidbody.AddForce(forceDirection * windStrength, ForceMode.Force);
 
                     }
 
                     Debug.DrawLine(mouseCollisionPoint, gameObject.transform.position, Color.red);
 
                     break;
-
+                
+                //Fire Spell
                 case 2:
 
                     //Get the fire spell object and make it active
                     transform.GetChild(0).gameObject.SetActive(true);
+
+                    break;
+                
+                //Ice Spell
+                case 3:
+
+                    //Send out a ray from the camera to where the user is clicking on the screen.
+                    Ray mouseRayIce = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                    RaycastHit mouseHitIce;
+
+                    if (Physics.Raycast(mouseRayIce, out mouseHitIce)){
+
+                        GameObject frozenObject = mouseHitIce.rigidbody.gameObject;
+
+                        //Remove the friction coming from the object itself.
+                        frozenObject.GetComponent<BoxCollider>().material = null;
+
+                        frozenObject.GetComponent<Renderer>().material.color = new Color32(117, 216, 230, 255);
+
+                    }
 
                     break;
 
@@ -68,18 +106,6 @@ public class SpellScripts : MonoBehaviour{
 
             //The fire spell is the first child of the player object
             transform.GetChild(0).gameObject.SetActive(false);
-
-        }
-
-        //Go through potential numbers to check if any are down
-        for (int i = 0; i < 10; ++i){
-
-            if (Input.GetKeyDown("" + i)){
-
-                //Update the current selected spell if the player picks a number.
-                currentSpell = i;
-
-            }
 
         }
 

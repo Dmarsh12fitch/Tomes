@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour{
     private Vector3 inputVector;
 
     //Stores the speeds the player moves in each direction/action.
-    private float playerSpeed = 5.0f, jumpSpeed = 8.0f;
+    private float playerSpeed = 5.0f, jumpSpeed = 1000.0f;
 
     //Stores a check on if the player is currently on the ground, used for jumping.
     private bool isGrounded = false;
