@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour{
 
@@ -76,6 +77,14 @@ public class PlayerController : MonoBehaviour{
     //Check if the object has started touching the ground and change isGrounded accordingly.
     void OnCollisionEnter(Collision collision){
         isGrounded = true;
+    }
+
+    //When the player object is disabled
+    void OnDisable(){
+
+        //Reload the scene as the player has "died" in some way
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
 }
