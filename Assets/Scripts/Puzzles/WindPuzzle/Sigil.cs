@@ -21,10 +21,15 @@ public class Sigil : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // if the other object's tag matches the sigil type then the sigil gets activated
+        activated = other.gameObject.CompareTag(sigilType.ToString());
+    }
+
+    // if the matching object leaves the platform the sigil is deactivated 
+    private void OnTriggerExit(Collider other)
+    {
         if (other.gameObject.CompareTag(sigilType.ToString()))
         {
-            activated = true;
+            activated = false;
         }
     }
-    //Todo find a way to deactivate sigial if object leaves trigger
 }
