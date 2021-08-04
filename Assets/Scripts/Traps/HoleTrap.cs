@@ -7,7 +7,7 @@ public class HoleTrap : MonoBehaviour
     public GameObject Platform;
     public GameObject Offpos;
     public GameObject Onpos;
-    public float pos = 0;
+    public float pos ;
     private float spikeSpeed = 10;
     public bool Activated;
     // Start is called before the first frame update
@@ -18,36 +18,41 @@ public class HoleTrap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Activated == true && pos == 0){
+        if (Activated == true ){
             StartCoroutine(SpikeOn());
         }
-        SpikeMovement();
+        //SpikeMovement();
+       
 
-       //Debug.Log(pos);    
+       Debug.Log(pos);    
     }
         
         //Turns spike to on positon
         IEnumerator SpikeOn(){          
             Platform.transform.position = Vector3.MoveTowards(Platform.transform.position, Onpos.transform.position, spikeSpeed );
             yield return new WaitForSeconds(2);
-            pos = 1;
+            StartCoroutine(SpikeOff());
+            Activated = false;
+            pos = 0;
         }
         //Turns spike to off position
         IEnumerator SpikeOff(){
             Platform.transform.position = Vector3.MoveTowards(Platform.transform.position, Offpos.transform.position, spikeSpeed );
-            yield return new WaitForSeconds(3);
-            pos = 0;
+            yield return new WaitForSeconds(5);
+            Activated = true;
+            pos = 1;
         }
 
     //Checks and Sets spikes next positon
     private void SpikeMovement(){
-        if (pos == 1 && Activated == true){
-            StartCoroutine(SpikeOff());
+        if (pos == 13 && Activated == true){
+            StartCoroutine(SpikeOn());
             
         }
        // if (pos == 2 && Activated == true){
             //StartCoroutine(SpikeOn());
             
+    
         
     }
 }
