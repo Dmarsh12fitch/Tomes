@@ -30,7 +30,7 @@ public class HoleTrap : MonoBehaviour
         //Turns spike to on positon
         IEnumerator SpikeOn(){          
             Platform.transform.position = Vector3.MoveTowards(Platform.transform.position, Onpos.transform.position, spikeSpeed );
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
             StartCoroutine(SpikeOff());
             Activated = false;
             pos = 0;
@@ -49,10 +49,14 @@ public class HoleTrap : MonoBehaviour
             StartCoroutine(SpikeOn());
             
         }
-       // if (pos == 2 && Activated == true){
-            //StartCoroutine(SpikeOn());
-            
+       
     
-        
     }
+
+// Checks if the player steps on the trap and then activates
+     private void OnTriggerEnter(Collider other) {
+            if(other.CompareTag("Player")){
+                Activated = true;
+            }
+        }  
 }
