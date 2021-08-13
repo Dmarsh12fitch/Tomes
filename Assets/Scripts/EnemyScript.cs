@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour{
 
     private GameObject player;
+    private Rigidbody rigidBody;
 
     //Stores the distance the player needs to be within
     private float triggerDistance = 5.0f;
@@ -15,17 +16,22 @@ public class EnemyScript : MonoBehaviour{
     private void Start(){
 
         player = GameObject.Find("Player");
+        rigidBody = gameObject.GetComponent<Rigidbody>();
 
     }
 
     void Update(){
 
-        transform.LookAt(player.transform);
+        Vector3 direction = player.transform.position - transform.position;
+
+        direction.Normalize();
 
         //If the distance between the enemies position and the players position is within range
         if (Vector3.Distance(transform.position, player.transform.position) <= triggerDistance){
 
-            transform.position += transform.forward * enemySpeed * Time.deltaTime;
+            Vector3 addedVelocity = direction * enemySpeed;
+
+            rigidBody.velocity = new Vector3(addedVelocity.x, rigidBody.velocity.y, addedVelocity.z);
 
         }
     }
