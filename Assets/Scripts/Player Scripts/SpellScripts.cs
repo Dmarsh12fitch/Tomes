@@ -8,7 +8,7 @@ public class SpellScripts : MonoBehaviour{
     private int currentSpell = 0;
 
     //The force that is added to the object when hit by the wind spell.
-    private float windStrength = 100.0f;
+    private float windStrength = 1000.0f;
 
 
 
@@ -90,7 +90,8 @@ public class SpellScripts : MonoBehaviour{
                         GameObject frozenObject = mouseHitIce.rigidbody.gameObject;
 
                         //Remove the friction coming from the object itself.
-                        frozenObject.GetComponent<BoxCollider>().material = null;
+                        frozenObject.GetComponent<Collider>().material.staticFriction = 0.0f;
+                        frozenObject.GetComponent<Collider>().material.dynamicFriction = 0.0f;
 
                         frozenObject.GetComponent<Renderer>().material.color = new Color32(117, 216, 230, 255);
 
