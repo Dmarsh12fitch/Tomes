@@ -8,7 +8,7 @@ public class SpellScripts : MonoBehaviour{
     private int currentSpell = 0;
 
     //The force that is added to the object when hit by the wind spell.
-    private float windStrength = 1000.0f;
+    private float windStrength = 800.0f;
 
 
 
@@ -60,8 +60,8 @@ public class SpellScripts : MonoBehaviour{
 
                         Vector3 forceDirection = spellHit.point - gameObject.transform.position;
 
-                        //Add force to objects hit within the spell.
-                        spellHit.rigidbody.AddForce(forceDirection * windStrength, ForceMode.Force);
+                        //Add force to objects hit within the spell. Divide the wind power by the distance to make the spell weaker from far away.
+                        spellHit.rigidbody.AddForce(forceDirection * (windStrength / Vector3.Distance(spellHit.point, gameObject.transform.position)), ForceMode.Force);
 
                     }
 
@@ -96,6 +96,29 @@ public class SpellScripts : MonoBehaviour{
                         frozenObject.GetComponent<Renderer>().material.color = new Color32(117, 216, 230, 255);
 
                     }
+
+                    break;
+
+                //Geo Spell
+                case 4:
+
+                    //Get the status of if the platform in the scene is activated or not.
+                    bool platformActivation = GameObject.Find("Earth Platform").GetComponent<EarthPlatform>().Activated;
+
+                    //If it is not activated, activated it, otherwise deactivate it.
+                    if (platformActivation == false){
+
+                        platformActivation = true;
+
+                    }
+                    else{
+
+                        platformActivation = false;
+
+                    }
+
+                    //Send the new status out to the platform.
+                    GameObject.Find("Earth Platform").GetComponent<EarthPlatform>().Activated = platformActivation;
 
                     break;
 

@@ -26,8 +26,19 @@ public class TrapFloorSpikes : MonoBehaviour
 
        //Debug.Log(pos);    
     }
-        //Sends spikes to  mid position to indicate trap
-        IEnumerator SpikeMid (){
+
+    private void OnCollisionEnter(Collision collision){
+
+        if (collision.gameObject.tag == "Player"){
+
+            collision.gameObject.SetActive(false);
+
+        }
+
+    }
+
+    //Sends spikes to  mid position to indicate trap
+    IEnumerator SpikeMid (){
             Spikes.transform.position = Vector3.MoveTowards(Spikes.transform.position, Midpos.transform.position, spikeSpeed );
             yield return new WaitForSeconds(2);
             pos = 2;
