@@ -24,7 +24,7 @@ public class HoleTrap : MonoBehaviour
         //SpikeMovement();
        
 
-       Debug.Log(pos);    
+      // Debug.Log(pos);    
     }
         
         //Turns spike to on positon
