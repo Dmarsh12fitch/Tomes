@@ -9,6 +9,7 @@ TagManager:
   - Earth
   - Wind
   - Axe Trap
+  - EarthPlatform
   layers:
   - Default
   - TransparentFX

@@ -102,29 +102,46 @@ public class SpellScripts : MonoBehaviour{
                 //Geo Spell
                 case 4:
 
-                    //Get the status of if the platform in the scene is activated or not.
-                    bool platformActivation = GameObject.Find("Earth Platform").GetComponent<EarthPlatform>().Activated;
+                    if (Input.GetKeyDown(KeyCode.Mouse0)){
 
-                    //If it is not activated, activated it, otherwise deactivate it.
-                    if (platformActivation == false){
+                        GameObject[] platforms;
+                        platforms = GameObject.FindGameObjectsWithTag("EarthPlatform");
 
-                        platformActivation = true;
+                        //Go through the platforms in the scene
+                        foreach (GameObject p in platforms)
+                        {
+
+                            //Get the status of if the platform in the scene is activated or not.
+                            bool platformActivation = p.GetComponent<EarthPlatform>().Activated;
+
+                            //If it is not activated, activated it, otherwise deactivate it.
+                            if (platformActivation == false)
+                            {
+
+                                platformActivation = true;
+
+                            }
+                            else
+                            {
+
+                                platformActivation = false;
+
+                            }
+
+                            //Send the new status out to the platform.
+                            p.GetComponent<EarthPlatform>().Activated = platformActivation;
+
+
+                        }
 
                     }
-                    else{
-
-                        platformActivation = false;
-
-                    }
-
-                    //Send the new status out to the platform.
-                    GameObject.Find("Earth Platform").GetComponent<EarthPlatform>().Activated = platformActivation;
 
                     break;
 
             }
 
         }
+
         //Once left click is taken off, deactivate anything that needs to be deactivated
         else{
 
