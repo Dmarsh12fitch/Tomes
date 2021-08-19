@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour{
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded){
 
+            Debug.Log("Yes");
+
             //Add an upwards force at the jumpSpeed set, apply it instantly.
             playerRigidbody.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
 

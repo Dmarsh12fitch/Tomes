@@ -10,6 +10,7 @@ TagManager:
   - Wind
   - Axe Trap
   - EarthPlatform
+  - Enemy
   layers:
   - Default
   - TransparentFX
